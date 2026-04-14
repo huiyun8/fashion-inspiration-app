@@ -2,8 +2,6 @@
 
 Upload garment photos, classify them with **Gemini** (preferred) or **OpenAI**, browse/search, filter by structured attributes, add annotations, and capture **human feedback** (ratings/comments/optional corrected attributes + stored AI snapshot for export).
 
-There’s a sibling Spring Boot backend with a similar API shape in `../fashion-inspiration-java`. Don’t run both on port 8000 at the same time.
-
 ## Data model (short)
 
 - **Image**: one library row per upload—storage path, timestamps, optional display title, and **`ai_metadata_json`** (the full classifier payload: summary text plus structured fields after parsing).
