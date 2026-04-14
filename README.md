@@ -76,7 +76,6 @@ In the modal UI, AI vs human content is separated visually:
 - **Designer annotations** are grouped under a separate “Designer annotations” pill with tags/notes forms.
 - **Human feedback** is its own section (“Human feedback (AI quality)”) distinct from annotations.
 
-If you demo this, point reviewers at the **pill row** + separate sections in the modal; that’s the intended distinction.
 
 ## Location fields: realism & limitations
 
@@ -97,9 +96,8 @@ Improvements that would make this more “real product” and less “model gues
 
 ## How to improve (practical roadmap)
 
-If you’re iterating beyond the PoC, these are the highest-impact upgrades—in the order most teams actually ship them:
 
-- **Better prompt constraints**: tighten the classifier prompt with stronger “must be one of …” guidance, require `null` instead of guessing, and add a second-pass “repair JSON / shorten output” retry path when parsing fails (you already have parsing hardening + compact retry patterns in the Gemini path).
+- **Better prompt constraints**: tighten the classifier prompt with stronger “must be one of …” guidance, require `null` instead of guessing, and add a second-pass “repair JSON / shorten output” retry path when parsing fails.
 - **Larger ontology**: expand `app/services/ontology.py` from a small alias map into a maintained vocabulary (synonyms, preferred labels, optional hierarchies like `outerwear → coat`), plus rules for multi-token materials/patterns.
 - **Human-in-the-loop corrections → fine-tuning**: use `POST /api/images/{id}/feedback` + `GET /api/images/{id}/feedback?include_ai_snapshot=true` to build a reviewable dataset of `(image, ai_snapshot, human_correction)` pairs; export JSONL and train/adapt a model (fine-tune, LoRA, distillation, or “teacher-student” labeling).
 - **Embeddings for context**: add an embedding index for images (vision embeddings) and/or text (attributes + description + notes) to support semantic `q` retrieval and “similar items” panels, while keeping structured filters for reliability.
@@ -150,23 +148,17 @@ Use this as a reviewer walkthrough:
 
 ### Demo video
 
-**Slot in this README:** after you add the file, this link should work in the repo browser:
 
 [Demo walkthrough (MOV)](docs/demo/walkthrough.mov)
 
 Add a short screen recording so reviewers can see the flow without running the app.
 
-1. **Create a folder** (if needed): `docs/demo/` at the project root.
-2. **Drop your file** there, e.g. `docs/demo/walkthrough.mov` (MP4/MOV are fine; keep large binaries out of git if your host has size limits—use **Git LFS**, a **Release** asset, or an external host).
-3. **Filename:** this repo uses `walkthrough.mov` (or update the link above to match your filename).
-
-**GitHub:** A relative link to the video in the repo usually opens in the browser or offers download. For **inline playback** in the README UI, many teams upload the clip to **YouTube / Loom / Drive** and use `[Watch the demo](https://...)` instead (or attach the MP4 to a **GitHub Release** and link that URL).
 
 **Local preview:** Some Markdown previews support HTML, e.g. `<video src="docs/demo/walkthrough.mov" controls width="720"></video>`—GitHub’s README renderer may ignore that tag, so treat the **markdown link** as the portable default.
 
 ## Configuration
 
-Settings are loaded from a `.env` file in the **project root** (not your current working directory).
+Settings are loaded from a `.env` file in the **project root**
 
 Required (defaults already provided in `.env.example`):
 
@@ -337,10 +329,6 @@ For `--pred-source classify`, each line needs `image_file` (or `image_path`) res
 #### Confusion matrices
 
 Use **`--confusion-matrix`** on `eval/evaluate.py` for **qualitative** error analysis (e.g. outerwear vs knitwear). Details: **[eval/README.md](eval/README.md)**.
-
-### Example table (illustrative)
-
-For write-ups you can stylize a table; treat **D.1 / D.2** above as authoritative for this repo’s current manifests.
 
 
 ## Limitations & future work (short)
