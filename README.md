@@ -148,24 +148,7 @@ Use this as a reviewer walkthrough:
 7) **Feedback**: submit a rating/comment (optional corrected attributes) → confirm feedback summary updates on the detail fetch.
 8) **Eval (optional)**: maintain a JSONL manifest with `image_id`, `image_file`, and reviewer `expected` fields, then run `python -m eval.evaluate ...` (see **Evaluation**; use `eval/split_dataset.py` if you need train/test file lists first).
 
-### Screenshots (add these for submissions)
-
-Place PNGs under `docs/screenshots/` (create the folder locally) and keep stable filenames:
-
-| Screenshot | What to capture |
-| --- | --- |
-| `docs/screenshots/01-upload.png` | Upload panel + success state |
-| `docs/screenshots/02-search-filters.png` | Search box + filters + results grid |
-| `docs/screenshots/03-modal-ai-vs-human.png` | Modal showing AI panel vs human sections |
-| `docs/screenshots/04-feedback.png` | Human feedback form + summary |
-
-Embed in your writeup like:
-
-```markdown
-![Upload](docs/screenshots/01-upload.png)
-```
-
-### Demo video (optional)
+### Demo video
 
 **Slot in this README:** after you add the file, this link should work in the repo browser:
 
