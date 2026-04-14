@@ -74,17 +74,6 @@ In the modal UI, AI vs human content is separated visually:
 - **Designer annotations** are grouped under a separate “Designer annotations” pill with tags/notes forms.
 - **Human feedback** is its own section (“Human feedback (AI quality)”) distinct from annotations.
 
-
-## Location fields: realism & limitations
-
-`continent/country/city` are included because they’re useful when the image contains **strong contextual cues**, but **pure vision often cannot reliably infer geography** (and that’s OK).
-
-Improvements that would make this more “real product” and less “model guessing”:
-
-- **EXIF / manual location fields** at upload time
-- **Photographer-provided context** (shoot city, market, runway show)
-- Optional **GPS** (privacy-sensitive; usually not appropriate for a generic public demo)
-
 ## Future improvements (high leverage)
 
 - **Semantic search** (embeddings) + hybrid filtering (structured attributes + vector similarity)
