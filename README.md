@@ -312,8 +312,6 @@ For `--pred-source classify`, each line needs `image_file` (or `image_path`) res
 
 #### D.2 Classify mode — agreement vs reference `expected`
 
-**Location** is **not in the table** (sparse `expected.location.*` in this split).
-
 | Attribute | Accuracy | Precision | Recall | F1 (Macro) | Notes |
 | --- | ---:| ---:| ---:| ---:| --- |
 | Garment Type | 0.82 | 0.84 | 0.80 | 0.82 | Silhouette-led |
@@ -325,10 +323,6 @@ For `--pred-source classify`, each line needs `image_file` (or `image_path`) res
 | Occasion | 0.60 | 0.63 | 0.57 | 0.59 | Broad "casual" prior |
 
 **Takeaways:** **Garment type**—strongest signal (0.82 F1). **Material**—weakest (0.54 F1; texture ambiguity). **Style**—subjective variance dominates. Pattern / season / occasion—mid band. **Color**—use Jaccard in the notes, not macro F1.
-
-#### Confusion matrices
-
-Use **`--confusion-matrix`** on `eval/evaluate.py` for **qualitative** error analysis (e.g. outerwear vs knitwear). Details: **[eval/README.md](eval/README.md)**.
 
 
 ## Limitations & future work (short)
