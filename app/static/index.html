@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fashion Garment Classification &amp; Inspiration Web App</title>
+    <link rel="stylesheet" href="/assets/styles.css?v=6" />
+  </head>
+  <body>
+    <header class="top">
+      <div>
+        <h1>Fashion Garment Classification &amp; Inspiration Web App</h1>
+        <p class="sub">
+          Upload field photos, auto-tag with AI, add designer notes, and filter your archive.
+        </p>
+      </div>
+    </header>
+
+    <section class="panel">
+      <h2>Upload</h2>
+      <form id="upload-form" class="upload-row">
+        <label class="file">
+          <input type="file" id="file" accept="image/*" multiple />
+          <span>Choose images</span>
+        </label>
+        <p class="hint inline-hint">
+          Tip: in the file picker, hold <strong>Cmd</strong> (or <strong>Shift</strong>) to select multiple images.
+        </p>
+        <div id="file-names" class="file-names" aria-live="polite"></div>
+        <button type="submit">Upload &amp; classify</button>
+      </form>
+      <p id="upload-status" class="status" aria-live="polite"></p>
+    </section>
+
+    <section class="panel">
+      <h2>Search &amp; filters</h2>
+      <p class="hint">
+        Filters are built from your library. Full-text search matches descriptions, AI tags, locations,
+        trend notes, and your annotations.
+      </p>
+      <div class="controls">
+        <div class="search-row">
+          <input type="search" id="q" placeholder='Try "embroidered neckline" or "artisan market"' />
+          <button type="button" id="search-btn">Search</button>
+        </div>
+        <div id="filter-groups" class="filter-groups"></div>
+        <button type="button" id="clear-filters" class="ghost">Clear filters</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="lib-head">
+        <h2>Library <span id="count" class="badge"></span></h2>
+        <div class="lib-actions">
+          <button type="button" id="toggle-select" class="ghost">Select</button>
+          <button type="button" id="toggle-select-all" class="ghost">Select all</button>
+          <button type="button" id="delete-selected" class="danger" disabled>Delete</button>
+        </div>
+      </div>
+      <div id="grid" class="grid"></div>
+    </section>
+
+    <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+      <div class="modal-card">
+        <button type="button" class="close" id="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-body">
+          <img id="modal-img" alt="" />
+          <div class="modal-meta">
+            <h3 id="modal-title">Image</h3>
+            <div class="pill-row">
+              <span class="pill ai">AI metadata</span>
+              <span class="pill user">Designer annotations</span>
+            </div>
+            <div class="ai-panel" aria-label="AI-generated classification">
+              <h4 class="section-title ai-title">AI-generated summary</h4>
+              <p id="modal-desc" class="desc ai-desc"></p>
+              <h4 class="section-title ai-title subtle">Structured AI attributes</h4>
+              <dl id="modal-ai" class="kv ai-kv"></dl>
+            </div>
+            <div class="user-block">
+              <details class="optional-meta modal-meta-edit">
+                <summary>Optional Library Data</summary>
+                <form id="meta-form" class="anno-form">
+                  <input type="text" id="meta-designer" placeholder="Designer / team" />
+                  <div class="optional-meta-grid">
+                    <input type="number" id="meta-year" placeholder="Year" min="1990" max="2035" />
+                    <input type="number" id="meta-month" placeholder="Month" min="1" max="12" />
+                    <input type="text" id="meta-season" placeholder="Captured season (e.g. SS26)" />
+                  </div>
+                  <button type="submit">Save</button>
+                </form>
+                <p id="meta-status" class="status" aria-live="polite"></p>
+              </details>
+              <h4>Your tags &amp; notes</h4>
+              <div id="anno-existing" class="anno-existing"></div>
+              <form id="anno-form" class="anno-form">
+                <input type="text" id="anno-tags" placeholder="Tags (comma-separated)" />
+                <textarea id="anno-notes" rows="3" placeholder="Notes / observations"></textarea>
+                <button type="submit">Save annotation</button>
+              </form>
+              <h4>Human feedback (AI quality)</h4>
+              <p class="hint inline-hint">
+                Rate the classifier, add notes, or suggest a corrected garment type for training data.
+              </p>
+              <form id="feedback-form" class="anno-form">
+                <label class="inline-label">
+                  Rating (1–5)
+                  <select id="fb-rating">
+                    <option value="">—</option>
+                    <option value="1">1 — poor</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 — excellent</option>
+                  </select>
+                </label>
+                <textarea id="fb-comment" rows="2" placeholder="What was wrong or right? (optional if rating set)"></textarea>
+                <input type="text" id="fb-garment-fix" placeholder="Correct garment type if AI was wrong (optional)" />
+                <button type="submit">Submit feedback</button>
+                <div id="feedback-summary" class="feedback-summary hidden" aria-live="polite"></div>
+              </form>
+              <p id="feedback-status" class="status" aria-live="polite"></p>
+              <p id="delete-status" class="status" aria-live="polite"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/assets/app.js?v=11"></script>
+  </body>
+</html>

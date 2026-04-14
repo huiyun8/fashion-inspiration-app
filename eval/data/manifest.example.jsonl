@@ -1,0 +1,2 @@
+{"image_id": 1, "expected": {"garment_type": "dress", "style": "minimal", "material": "linen", "occasion": "resort", "location": {"continent": "Europe", "country": "France", "city": "Paris"}}}
+{"image_id": 2, "expected": {"garment_type": "outerwear", "style": "tailored", "material": "wool", "occasion": "work", "color_palette": ["charcoal"], "location": {"continent": null, "country": null, "city": null}}}
