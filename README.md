@@ -40,7 +40,7 @@ Evaluation note:
 
 - `eval/evaluate.py` applies the same canonicalization when comparing **expected vs predicted** for those scalar fields, so your metrics aren’t needlessly punished by harmless synonym drift.
 
-What we do **not** fully solve yet (senior-level “real world” gap):
+What we do **not** fully solve yet:
 
 - A **real ontology** (hundreds/thousands of concepts), hierarchical relations, and learned normalization.
 - **True multi-label support** per field (e.g. multiple independent `garment_type` values with UI + filter semantics to match).
