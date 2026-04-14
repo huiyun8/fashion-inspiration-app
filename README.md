@@ -149,10 +149,6 @@ Use this as a reviewer walkthrough:
 
 [Demo walkthrough (MOV)](docs/demo/walkthrough.mov)
 
-Add a short screen recording so reviewers can see the flow without running the app.
-
-
-**Local preview:** Some Markdown previews support HTML, e.g. `<video src="docs/demo/walkthrough.mov" controls width="720"></video>`—GitHub’s README renderer may ignore that tag, so treat the **markdown link** as the portable default.
 
 ## Configuration
 
